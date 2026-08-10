@@ -1,0 +1,45 @@
+## Production compose — VPS deployment (e.g. Oracle Cloud Free Tier).
+##
+## Differences from docker-compose.yml (local dev):
+##  - No local `mongo` service — MONGODB_URL in backend/.env must point to
+##    a MongoDB Atlas cluster (or any managed Mongo) instead.
+##  - Adds Caddy as a reverse proxy for automatic HTTPS (Let's Encrypt).
+##    Requires a domain name pointed at the VPS (see Caddyfile). If you
+##    don't have one yet, see the plain-HTTP fallback documented in the
+##    Caddyfile itself.
+##
+## Usage:
+##   cp backend/.env.example backend/.env   # then fill in production values
+##   docker compose -f docker-compose.prod.yml up -d --build
+
+services:
+  backend:
+    build:
+      context: ./backend
+    restart: unless-stopped
+    env_file:
+      - ./backend/.env
+    volumes:
+      - backend_uploads:/app/uploads
+      - backend_vector_store:/app/vector_store
+    expose:
+      - "8000"
+
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - backend
+
+volumes:
+  backend_uploads:
+  backend_vector_store:
+  caddy_data:
+  caddy_config:

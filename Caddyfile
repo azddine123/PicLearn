@@ -1,0 +1,13 @@
+# Caddy reverse proxy — automatic HTTPS (Let's Encrypt) in front of the backend.
+#
+# Production domain: piclearn.me (Namecheap, DNS A record -> VPS public IP).
+piclearn.me, www.piclearn.me {
+    reverse_proxy backend:8000
+}
+
+# Fallback: direct IP access (HTTP only). Kept for older EAS builds whose
+# EXPO_PUBLIC_API_URL still points at the raw VPS IP instead of the domain.
+# Android allows this because app.json sets usesCleartextTraffic.
+:80 {
+    reverse_proxy backend:8000
+}

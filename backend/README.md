@@ -105,3 +105,63 @@ Runs against a mocked/disconnected DB by default; CI additionally spins up a rea
 
 - `uploads/` — user-uploaded images, gitignored
 - `vector_store/` — ChromaDB RAG index (real user note content), gitignored
+
+## Deploying to production
+
+Current live deployment: **`https://piclearn.me`**, backend + Caddy (Docker) on an Azure VM, database on **MongoDB Atlas**. `http://<vps-ip>` also works as an HTTP fallback (see [`../Caddyfile`](../Caddyfile)) for older builds that predate the domain.
+
+The steps below work on any VPS (Azure, Oracle, a plain Hetzner/DigitalOcean box, ...) — swap the provider-specific bits (firewall rules, image name) as needed.
+
+### 1. Database — MongoDB Atlas
+
+1. Create a free **M0** (or the current equivalent free/low-cost tier) cluster at [cloud.mongodb.com](https://cloud.mongodb.com)
+2. Database Access → create a user (username/password)
+3. Network Access → allow the VPS's public IP (`<vps-ip>/32`) — narrower than `0.0.0.0/0`, update it if the VPS IP changes
+4. Copy the connection string — it goes in `MONGODB_URL` on the VPS:
+   `mongodb+srv://<user>:<password>@cluster0.xxxxx.mongodb.net/aaca_db`
+
+### 2. VPS
+
+Any Ubuntu 24.04 VM works. Install Docker, open inbound ports 80/443 in whatever firewall your provider uses (cloud console security group/NSG *and* any host-level firewall like `ufw`/`iptables` — some providers, notably Oracle Cloud, require both):
+
+```bash
+ssh <user>@<vps-ip>
+sudo apt update && sudo apt install -y docker.io docker-compose-v2
+sudo usermod -aG docker $USER   # log out/in once for this to take effect
+```
+
+### 3. Deploy
+
+```bash
+git clone https://github.com/azddine123/aaca-project.git
+cd aaca-project
+cp backend/.env.example backend/.env
+nano backend/.env   # MONGODB_URL (Atlas), DEBUG=false, SECRET_KEY, LLM keys, ...
+nano Caddyfile       # already set to piclearn.me — change if deploying elsewhere
+
+docker compose -f docker-compose.prod.yml up -d --build
+docker compose -f docker-compose.prod.yml logs -f backend
+```
+
+No domain yet? See the plain-HTTP fallback in [`../Caddyfile`](../Caddyfile) — Android already allows cleartext HTTP for this app (`usesCleartextTraffic` in `app.json`), so it works, just without TLS.
+
+### 4. Point the mobile app at it
+
+In `frontend/.env`:
+
+```bash
+EXPO_PUBLIC_API_URL=https://piclearn.me/api/v1
+```
+
+Then rebuild: `cd frontend && npx eas-cli build --platform android --profile preview`.
+
+### Operational note: the backend goes down if the VM does
+
+`restart: unless-stopped` (in `docker-compose.prod.yml`) only restarts the containers automatically when Docker itself restarts — it does **not** bring the VM back up if the VM is stopped or rebooted (manually, by the cloud provider, or by running out of trial credit). If the app suddenly can't reach the backend, check the VM/container status *before* looking for a network or app-side cause:
+
+```bash
+ssh <user>@<vps-ip> "sudo docker compose -f ~/aaca-project/docker-compose.prod.yml ps"
+ssh <user>@<vps-ip> "sudo docker compose -f ~/aaca-project/docker-compose.prod.yml logs backend --tail 20 --timestamps"
+```
+
+Consider free external uptime monitoring (e.g. UptimeRobot pinging `https://piclearn.me/health` every 5 min) to get alerted within minutes instead of discovering an outage hours or days later.

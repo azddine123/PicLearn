@@ -26,6 +26,7 @@ services:
       MONGODB_URL: mongodb://mongo:27017
     volumes:
       - backend_uploads:/app/uploads
+      - backend_vector_store:/app/vector_store
     depends_on:
       mongo:
         condition: service_healthy
@@ -33,3 +34,4 @@ services:
 volumes:
   mongo_data:
   backend_uploads:
+  backend_vector_store:
