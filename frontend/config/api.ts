@@ -35,6 +35,15 @@ const getApiUrl = (): string => {
         return url;
     }
 
+    if (!__DEV__) {
+        // Sans URL compilée, l'app ne peut jamais joindre le backend : crash
+        // explicite au démarrage plutôt qu'un échec réseau silencieux sur
+        // chaque écran.
+        throw new Error(
+            "EXPO_PUBLIC_API_URL est absente de ce build de production — vérifier le bloc env de eas.json."
+        );
+    }
+
     console.log('📡 Using default localhost API URL');
     return `http://localhost:${API_PORT}/api/v1`;
 };
