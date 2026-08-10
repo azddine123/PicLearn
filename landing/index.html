@@ -180,18 +180,11 @@ section { padding: 78px 0; }
 .t-card p { color: var(--text-2); font-size: 14px; }
 
 /* Guide d'installation */
-.guide { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-.g-step { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; }
-.g-step .num {
-    display: inline-grid; place-items: center; width: 30px; height: 30px; border-radius: 50%;
-    background: var(--blue); color: #fff; font-weight: 800; font-size: 14px; margin-bottom: 14px;
-}
-.g-step h3 { font-size: 17px; font-weight: 800; margin-bottom: 6px; }
-.g-step p { color: var(--text-2); font-size: 14.5px; }
-.g-step code {
-    font-family: var(--mono); font-size: 12px; color: var(--blue);
-    background: var(--blue-soft); padding: 1px 6px; border-radius: 6px;
-}
+#installer .sec-head p { font-size: 15px; }
+.guide { display: grid; grid-template-columns: minmax(0, 520px); justify-content: center; }
+.g-step { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 22px; text-align: center; }
+.g-step h3 { font-size: 15.5px; font-weight: 800; margin-bottom: 5px; }
+.g-step p { color: var(--text-2); font-size: 13px; }
 .dl-final { margin-top: 44px; text-align: center; }
 .dl-final .btn { font-size: 17px; padding: 16px 34px; }
 .dl-final .cta-note { display: block; margin-top: 12px; }
@@ -381,29 +374,13 @@ footer { background: #fff; border-top: 1px solid var(--border); padding: 32px 0 
         <div class="wrap">
             <div class="sec-head">
                 <h2>Installer <span class="b">l'application</span></h2>
-                <p>PicLearn se distribue directement en APK, sans passer par le Play Store.
-                Android affiche donc deux avertissements de routine — voici quoi répondre.</p>
+                <p>PicLearn se distribue directement en APK, sans passer par le Play Store.</p>
             </div>
             <div class="guide">
                 <div class="g-step">
-                    <span class="num">1</span>
                     <h3>Téléchargez l'APK</h3>
                     <p>Avec le bouton bleu de cette page. Votre navigateur peut demander de
                     confirmer le téléchargement : acceptez.</p>
-                </div>
-                <div class="g-step">
-                    <span class="num">2</span>
-                    <h3>Autorisez l'installation</h3>
-                    <p>À l'ouverture du fichier, Android demande d'autoriser votre navigateur
-                    à installer des applications : <code>Autoriser</code>, puis
-                    <code>Installer</code>.</p>
-                </div>
-                <div class="g-step">
-                    <span class="num">3</span>
-                    <h3>Play Protect</h3>
-                    <p>Si une fenêtre « App blocked » apparaît : <code>More details</code> →
-                    <code>Install anyway</code>. C'est l'avertissement standard pour toute
-                    application distribuée hors Play Store.</p>
                 </div>
             </div>
             <div class="dl-final">
