@@ -1,13 +1,25 @@
-# Caddy reverse proxy — automatic HTTPS (Let's Encrypt) in front of the backend.
-#
-# Production domain: piclearn.me (Namecheap, DNS A record -> VPS public IP).
+# Caddy — piclearn.me
+# HTTPS automatique (Let's Encrypt). Sert la page vitrine statique (landing/,
+# montée sur /srv/www par docker-compose.prod.yml) et proxifie les chemins
+# applicatifs vers le backend FastAPI.
+
 piclearn.me, www.piclearn.me {
-    reverse_proxy backend:8000
+	# Chemins servis par le backend (API mobile, santé, fichiers utilisateurs)
+	@backend path /api/* /health /images/* /uploads/* /docs /openapi.json
+	handle @backend {
+		reverse_proxy backend:8000
+	}
+
+	# Tout le reste : page vitrine
+	handle {
+		root * /srv/www
+		file_server
+	}
 }
 
-# Fallback: direct IP access (HTTP only). Kept for older EAS builds whose
-# EXPO_PUBLIC_API_URL still points at the raw VPS IP instead of the domain.
-# Android allows this because app.json sets usesCleartextTraffic.
+# Accès direct par IP (ancien point d'entrée HTTP des premiers builds) :
+# renvoi permanent vers le domaine. Plus aucun APK en circulation n'utilise
+# l'IP brute.
 :80 {
-    reverse_proxy backend:8000
+	redir https://piclearn.me{uri} permanent
 }
