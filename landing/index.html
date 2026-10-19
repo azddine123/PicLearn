@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>PicLearn — vos cours en photo, vos révisions générées</title>
-<meta name="description" content="Application Android qui transforme une photo de vos cours en résumé, quiz et flashcards. Gratuit pour commencer, 10 notes par mois. Téléchargement direct en APK.">
+<meta name="description" content="Application Android qui transforme une photo de vos cours en résumé, quiz et flashcards. Gratuit pour commencer, 10 notes par mois. Version Android bientôt disponible.">
 <link rel="canonical" href="https://piclearn.me/">
 
 <link rel="icon" type="image/png" href="/assets/favicon.png">
@@ -429,6 +429,7 @@ p { max-width: var(--measure); }
 .u-mt-5 { margin-top: var(--s-5); }
 .u-mt-6 { margin-top: var(--s-6); }
 .u-center-block { text-align: center; margin-top: var(--s-7); }
+.u-center-block p { margin-inline: auto; }
 .u-narrow { max-width: 820px; margin-inline: auto; }
 .u-code { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
 
@@ -496,6 +497,7 @@ p { max-width: var(--measure); }
 <!-- Bibliothèque d'icônes (inline, aucune requête réseau) -->
 <svg class="u-sprite" aria-hidden="true" focusable="false"><defs>
     <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m-5-4 5 5 5-5M5 20h14"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M13.5 4l-3 16"/></symbol>
     <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
     <symbol id="i-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 3l2.2 6.8L21 12l-6.8 2.2L12 21l-2.2-6.8L3 12l6.8-2.2z"/></symbol>
     <symbol id="i-folder" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></symbol>
@@ -524,14 +526,14 @@ p { max-width: var(--measure); }
                 <li><a href="#solution">Solution</a></li>
                 <li><a href="#fonctionnement">Fonctionnement</a></li>
                 <li><a href="#securite">Sécurité</a></li>
-                <li><a href="#installation">Installation</a></li>
+                <li><a href="#installation">Disponibilité</a></li>
                 <li><a href="#equipe">Équipe</a></li>
                 <li><a href="#faq">FAQ</a></li>
             </ul>
         </nav>
 
-        <a class="btn btn--primary header-cta" href="#installation">
-            <svg aria-hidden="true"><use href="#i-download"/></svg> Télécharger
+        <a class="btn btn--primary header-cta" href="https://github.com/azddine123/PicLearn" target="_blank" rel="noopener">
+            <svg aria-hidden="true"><use href="#i-code"/></svg> Code source
         </a>
 
         <button class="nav-toggle" id="navToggle" type="button"
@@ -559,11 +561,12 @@ p { max-width: var(--measure); }
                     lycéens et les étudiants qui révisent vite et bien.
                 </p>
                 <div class="hero-actions">
-                    <a class="btn btn--primary btn--lg" href="https://expo.dev/artifacts/eas/BBwhkP7TJLosmEVlcrGVE3e_OfJuUY_yWu9igby9v3o.apk">
-                        <svg aria-hidden="true"><use href="#i-download"/></svg> Télécharger pour Android
+                    <a class="btn btn--primary btn--lg" href="https://github.com/azddine123/PicLearn" target="_blank" rel="noopener">
+                        <svg aria-hidden="true"><use href="#i-code"/></svg> Voir le code sur GitHub
                     </a>
                     <a class="btn btn--secondary" href="#galerie">Voir l'application</a>
                 </div>
+                <p class="btn-note">Version Android bientôt disponible.</p>
             </div>
 
             <div class="shots">
@@ -726,27 +729,24 @@ p { max-width: var(--measure); }
         <div class="container">
             <div class="head">
                 <span class="kicker">Sécurité et confidentialité</span>
-                <h2>Ce que vous installez, <em>en clair</em></h2>
-                <p>PicLearn n'est pas encore publié sur le Play Store : la
-                distribution passe par un fichier APK signé, téléchargé depuis les
-                serveurs d'Expo. Voici de quoi vérifier que le fichier reçu est
-                bien le nôtre.</p>
+                <h2>Ce que fait l'application, <em>en clair</em></h2>
+                <p>Le code de PicLearn est public : chacune des garanties ci-dessous
+                peut être vérifiée directement dans le dépôt GitHub.</p>
             </div>
 
             <div class="sec-grid">
                 <div class="card">
-                    <h3>Le fichier</h3>
+                    <h3>Côté serveur</h3>
                     <ul class="facts u-mt-4">
-                        <li><b>Version</b><span>1.0.0 (build du 10 août 2026)</span></li>
-                        <li><b>Taille</b><span>122 918 372 octets — environ 117 Mio</span></li>
-                        <li><b>Compatibilité</b><span>Android 8.0 et versions ultérieures</span></li>
-                        <li><b>Empreinte SHA-256</b><code>36d8369f7515bcedccb893ff0f920dc572e6171c169f9d4d10474be62601aff5</code></li>
+                        <li><b>Mots de passe</b><span>Hachés avec bcrypt, jamais stockés en clair</span></li>
+                        <li><b>Sessions</b><span>Jetons à durée limitée, révoqués dès que le mot de passe est réinitialisé</span></li>
+                        <li><b>Anti-abus</b><span>Limitation du nombre de tentatives sur la connexion et l'inscription</span></li>
+                        <li><b>Images envoyées</b><span>Taille plafonnée, format vérifié octet par octet : seules de vraies images sont acceptées</span></li>
+                        <li><b>RGPD</b><span>Export de toutes vos données et suppression définitive du compte</span></li>
                     </ul>
                     <p class="u-mt-4">
-                        Pour vérifier l'empreinte sur un ordinateur, exécutez
-                        <code class="u-code">sha256sum piclearn.apk</code>
-                        après le téléchargement : le résultat doit être identique,
-                        caractère pour caractère.
+                        Le détail est lisible dans le
+                        <a href="https://github.com/azddine123/PicLearn" target="_blank" rel="noopener">code source</a>.
                     </p>
                 </div>
 
@@ -794,54 +794,40 @@ p { max-width: var(--measure); }
         </div>
     </section>
 
-    <!-- ══ INSTALLATION ══════════════════════════════════════════════ -->
+    <!-- ══ DISPONIBILITÉ (ancre #installation conservée pour les anciens liens) ══ -->
     <section class="section section--tint" id="installation">
         <div class="container">
             <div class="head head--center">
-                <span class="kicker">Installation</span>
-                <h2>Trois étapes, <em>deux minutes</em></h2>
+                <span class="kicker">Disponibilité</span>
+                <h2>La version Android arrive <em>bientôt</em></h2>
             </div>
 
             <div class="grid-3">
                 <article class="card reveal">
-                    <div class="icon-badge"><svg aria-hidden="true"><use href="#i-download"/></svg></div>
-                    <h3>1. Téléchargez</h3>
-                    <p>Appuyez sur le bouton ci-dessous depuis votre téléphone
-                    Android. Le navigateur demande une confirmation : acceptez.</p>
+                    <div class="icon-badge"><svg aria-hidden="true"><use href="#i-image"/></svg></div>
+                    <h3>Découvrez l'application</h3>
+                    <p>Les captures d'écran montrent le parcours complet, de la photo
+                    du cours jusqu'au quiz et aux flashcards.</p>
                 </article>
                 <article class="card reveal">
-                    <div class="icon-badge icon-badge--accent"><svg aria-hidden="true"><use href="#i-lock"/></svg></div>
-                    <h3>2. Autorisez la source</h3>
-                    <p>À l'ouverture du fichier, Android propose d'autoriser
-                    l'installation depuis votre navigateur. Ouvrez les paramètres
-                    proposés et activez l'autorisation pour cette source.</p>
+                    <div class="icon-badge icon-badge--accent"><svg aria-hidden="true"><use href="#i-code"/></svg></div>
+                    <h3>Explorez le code</h3>
+                    <p>Application mobile, API et pipeline d'IA sont publics sur
+                    GitHub : architecture, choix techniques et sécurité.</p>
                 </article>
                 <article class="card reveal">
-                    <div class="icon-badge"><svg aria-hidden="true"><use href="#i-check"/></svg></div>
-                    <h3>3. Installez</h3>
-                    <p>Si Play Protect affiche un avertissement, choisissez
-                    « Plus de détails » puis « Installer quand même ».</p>
+                    <div class="icon-badge"><svg aria-hidden="true"><use href="#i-spark"/></svg></div>
+                    <h3>Restez informé</h3>
+                    <p>La nouvelle version Android sera annoncée sur cette page.
+                    Une question en attendant&nbsp;? <a href="mailto:azas130hmd@gmail.com">Écrivez-nous</a>.</p>
                 </article>
             </div>
 
-            <details class="acc u-mt-6">
-                <summary>L'installation est bloquée&nbsp;?</summary>
-                <div class="acc-body">
-                    <p>Le chemin exact dépend de la version d'Android.</p>
-                    <ol>
-                        <li><b>Android 8 à 11</b> — Paramètres › Applications › Accès spécial › Installer des applications inconnues › choisissez votre navigateur › activez l'autorisation.</li>
-                        <li><b>Android 12 à 15</b> — Au moment de l'installation, appuyez sur « Paramètres » dans la fenêtre d'avertissement, puis activez « Autoriser depuis cette source » et revenez en arrière.</li>
-                        <li><b>Play Protect insiste</b> — « Plus de détails » puis « Installer quand même ». Cet avertissement s'affiche pour toute application dont la signature est inconnue de Google, indépendamment de son contenu.</li>
-                        <li><b>Espace insuffisant</b> — l'installation demande environ 250 Mio libres, le double de la taille du fichier.</li>
-                    </ol>
-                </div>
-            </details>
-
             <div class="u-center-block">
-                <a class="btn btn--primary btn--lg" href="https://expo.dev/artifacts/eas/BBwhkP7TJLosmEVlcrGVE3e_OfJuUY_yWu9igby9v3o.apk">
-                    <svg aria-hidden="true"><use href="#i-download"/></svg> Télécharger PicLearn 1.0.0
+                <a class="btn btn--primary btn--lg" href="https://github.com/azddine123/PicLearn" target="_blank" rel="noopener">
+                    <svg aria-hidden="true"><use href="#i-code"/></svg> Voir le code sur GitHub
                 </a>
-                <p class="btn-note">Fichier APK · 117 Mio · Android 8 et versions ultérieures</p>
+                <p class="btn-note">Version Android bientôt disponible</p>
             </div>
         </div>
     </section>
@@ -851,7 +837,7 @@ p { max-width: var(--measure); }
         <div class="container">
             <div class="head head--center">
                 <span class="kicker">Questions fréquentes</span>
-                <h2>Tout ce qu'on nous demande <em>avant d'installer</em></h2>
+                <h2>Tout ce qu'on nous demande <em>le plus souvent</em></h2>
             </div>
             <div class="u-narrow">
                 <details class="acc"><summary>PicLearn est-il gratuit&nbsp;?</summary>
@@ -872,14 +858,14 @@ p { max-width: var(--measure); }
                 <details class="acc"><summary>Que deviennent mes photos de cours&nbsp;?</summary>
                     <div class="acc-body"><p>Elles sont envoyées chiffrées, traitées pour en extraire le texte, puis conservées 90 jours avant suppression. Vos notes restent accessibles au-delà. À tout moment, l'onglet Profil permet d'exporter l'ensemble de vos données ou de supprimer définitivement votre compte.</p></div></details>
 
-                <details class="acc"><summary>Pourquoi l'application n'est-elle pas sur le Play Store&nbsp;?</summary>
-                    <div class="acc-body"><p>PicLearn est un projet en cours de finalisation, porté par deux étudiants. La publication sur le Play Store demande un compte développeur payant et un processus de validation ; nous préférons d'abord stabiliser l'application avec ses premiers utilisateurs. La distribution directe en APK nous permet aussi de livrer les corrections plus vite.</p></div></details>
+                <details class="acc"><summary>Quand l'application sera-t-elle disponible&nbsp;?</summary>
+                    <div class="acc-body"><p>PicLearn est un projet en cours de finalisation, porté par deux étudiants. La version Android sera bientôt disponible et sera annoncée sur cette page. En attendant, le code source est consultable sur <a href="https://github.com/azddine123/PicLearn" target="_blank" rel="noopener">GitHub</a>.</p></div></details>
 
                 <details class="acc"><summary>Une version iPhone est-elle prévue&nbsp;?</summary>
                     <div class="acc-body"><p>L'application est développée avec une technologie compatible iOS, mais aucune version iPhone n'est publiée à ce jour et nous ne pouvons pas encore annoncer de date.</p></div></details>
 
                 <details class="acc"><summary>Comment mettre à jour l'application&nbsp;?</summary>
-                    <div class="acc-body"><p>Les améliorations sont livrées automatiquement : l'application récupère les mises à jour à son démarrage. Une nouvelle installation n'est nécessaire que pour les changements majeurs, annoncés sur cette page.</p></div></details>
+                    <div class="acc-body"><p>Les améliorations sont livrées automatiquement : l'application récupère les mises à jour à son démarrage. Les changements majeurs seront annoncés sur cette page.</p></div></details>
 
                 <details class="acc"><summary>Qui est derrière PicLearn&nbsp;?</summary>
                     <div class="acc-body"><p>Deux étudiants ingénieurs de l'ENSA Béni Mellal, en filière IA et cybersécurité. Une question, un bug, une suggestion : <a href="mailto:azas130hmd@gmail.com">écrivez-nous</a>.</p></div></details>
@@ -919,8 +905,8 @@ p { max-width: var(--measure); }
                 <li class="card milestone reveal">
                     <span class="pill pill--next">À venir</span>
                     <div><h3>Publication sur le Play Store</h3>
-                    <p>Pour supprimer l'étape d'installation manuelle et les
-                    avertissements qui l'accompagnent.</p></div>
+                    <p>Pour installer PicLearn en un geste, avec les mises à jour
+                    gérées par le store.</p></div>
                 </li>
             </ul>
         </div>
@@ -956,11 +942,11 @@ p { max-width: var(--measure); }
     <section class="cta-final">
         <div class="container">
             <h2>Votre prochain cours mérite mieux qu'une photo oubliée</h2>
-            <p>Installez PicLearn et transformez votre première capture en révision.</p>
-            <a class="btn btn--primary btn--lg" href="https://expo.dev/artifacts/eas/BBwhkP7TJLosmEVlcrGVE3e_OfJuUY_yWu9igby9v3o.apk">
-                <svg aria-hidden="true"><use href="#i-download"/></svg> Télécharger pour Android
+            <p>La version Android arrive bientôt. Découvrez dès maintenant comment PicLearn est construit.</p>
+            <a class="btn btn--primary btn--lg" href="https://github.com/azddine123/PicLearn" target="_blank" rel="noopener">
+                <svg aria-hidden="true"><use href="#i-code"/></svg> Voir le code sur GitHub
             </a>
-            <small>Version 1.0.0 · 117 Mio · gratuit pour commencer</small>
+            <small>Version Android bientôt disponible · gratuite pour commencer</small>
         </div>
     </section>
 </main>
@@ -988,9 +974,10 @@ p { max-width: var(--measure); }
             <div>
                 <h3>Ressources</h3>
                 <ul>
-                    <li><a href="#installation">Guide d'installation</a></li>
+                    <li><a href="#installation">Disponibilité</a></li>
                     <li><a href="#faq">Questions fréquentes</a></li>
-                    <li><a href="#securite">Sécurité de l'APK</a></li>
+                    <li><a href="#securite">Sécurité</a></li>
+                    <li><a href="https://github.com/azddine123/PicLearn" target="_blank" rel="noopener">Code source</a></li>
                     <li><a href="#equipe">L'équipe</a></li>
                 </ul>
             </div>
@@ -1020,9 +1007,8 @@ p { max-width: var(--measure); }
       "operatingSystem": "Android 8.0+",
       "applicationCategory": "EducationalApplication",
       "softwareVersion": "1.0.0",
-      "fileSize": "117MB",
       "url": "https://piclearn.me/",
-      "downloadUrl": "https://piclearn.me/#installation",
+      "codeRepository": "https://github.com/azddine123/PicLearn",
       "inLanguage": "fr",
       "description": "Application Android qui transforme une photo de cours en résumé, quiz et flashcards grâce à l'intelligence artificielle.",
       "offers": {
@@ -1052,7 +1038,7 @@ p { max-width: var(--measure); }
         { "@type": "Question", "name": "Quelles langues sont prises en charge ?", "acceptedAnswer": { "@type": "Answer", "text": "L'interface est en français. La reconnaissance et la génération fonctionnent en français, anglais et arabe." } },
         { "@type": "Question", "name": "Peut-on l'utiliser hors ligne ?", "acceptedAnswer": { "@type": "Answer", "text": "Non. Une connexion est nécessaire pour créer une note, car le traitement s'exécute sur nos serveurs." } },
         { "@type": "Question", "name": "Que deviennent mes photos de cours ?", "acceptedAnswer": { "@type": "Answer", "text": "Elles sont conservées 90 jours puis supprimées. Vous pouvez exporter vos données ou supprimer votre compte à tout moment." } },
-        { "@type": "Question", "name": "Pourquoi l'application n'est-elle pas sur le Play Store ?", "acceptedAnswer": { "@type": "Answer", "text": "Le projet est en cours de finalisation. La distribution directe en APK permet de livrer les corrections plus rapidement." } },
+        { "@type": "Question", "name": "Quand l'application sera-t-elle disponible ?", "acceptedAnswer": { "@type": "Answer", "text": "Le projet est en cours de finalisation. La version Android sera bientôt disponible et annoncée sur piclearn.me." } },
         { "@type": "Question", "name": "Une version iPhone est-elle prévue ?", "acceptedAnswer": { "@type": "Answer", "text": "Aucune version iPhone n'est publiée à ce jour et aucune date n'est annoncée." } }
       ]
     }
